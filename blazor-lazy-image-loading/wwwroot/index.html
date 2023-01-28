@@ -31,6 +31,22 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
+
+    <script>
+        window.Interop = {
+            setImage: function (element,url) {
+                return new Promise(resolve => {
+                    var img = new Image();
+                    img.src = url;
+                    img.onload = function () {
+                        element.src = url;
+                        resolve(url);
+                    };
+                });
+            }
+        };
+
+    </script>
 </body>
 
 </html>
